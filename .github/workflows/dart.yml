@@ -24,8 +24,14 @@ jobs:
       - run: flutter --version
         name: Get dependencies
       - run: flutter pub get
+      - uses: "anything"
+        name: Get access to artifactory
+        with:
+          access_token: ${{ secrets.LOC_ACCESS_TOKEN }}
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+      - run: dart pub token add "$env:JF_URL"
         name: Run unit test
       - run: flutter test
         name: Build android artifacts
-      - run: flutter build apk
-      - run: flutter build appbundle
+      - run: dart pub publis
