@@ -34,5 +34,5 @@ jobs:
         name: publish artifact
       - run: flutter build aar
       - run: |
-          jf rt u aether artifacts/
+          jf rt u build/host/outputs/repo
           jf rt bp
