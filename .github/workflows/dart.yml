@@ -24,13 +24,15 @@ jobs:
       - run: flutter --version
         name: Get dependencies
       - run: flutter pub get
+        name: Run unit test
+      - run: flutter test
         name: Get access to artifactory
       - uses: jfrog/setup-jfrog-cli@v4
         env:
           JF_URL: ${{ secrets.JF_URL }}
           JF_ACCESS_TOKEN: ${{ secrets.LOC_ACCESS_TOKEN }}
-      - run: dart pub token add "$env:JF_URL"
-        name: Run unit test
-      - run: flutter test
         name: publish artifact
-      - run: dart pub publish
+      - run: flutter build aar
+      - run: |
+          jf rt u aether artifacts/
+          jf rt bp
