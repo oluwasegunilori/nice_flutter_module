@@ -4,6 +4,9 @@
 # documentation.
 
 name: Ci/CD pipeline
+env: 
+  MAVEN_REPO_USERNAME: ${{ secrets.MAVEN_REPO_USERNAME }}
+  MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
 
 on:
   push:
@@ -26,13 +29,8 @@ jobs:
       - run: flutter pub get
         name: Run unit test
       - run: flutter test
-        name: Get access to artifactory
-      - uses: jfrog/setup-jfrog-cli@v4
-        env:
-          JF_URL: ${{ secrets.JF_URL }}
-          JF_ACCESS_TOKEN: ${{ secrets.LOC_ACCESS_TOKEN }}
         name: publish artifact
       - run: flutter build aar
-      - run: |
-          jf rt u aether artifacts/
-          jf rt bp
+        name: Publish to Maven
+      - run: ./gradlew publish
+       
