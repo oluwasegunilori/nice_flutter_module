@@ -32,5 +32,7 @@ jobs:
         name: publish artifact
       - run: flutter build aar
         name: Publish to Maven
-      - run: ./gradlew publish
-       
+      - run: |
+          cd .android
+          ./gradlew publish
+          
