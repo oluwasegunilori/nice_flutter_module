@@ -37,4 +37,4 @@ jobs:
           jfrog rt u --url="${{ secrets.JF_URL }}" \
           --user="${{ secrets.MAVEN_REPO_PASSWORD }}" \
           --password="${{ secrets.MAVEN_REPO_USERNAME }}" \
-          /build/host/outputs a12-nicemodule-android
+          /home/runner/work/nice_flutter_module/nice_flutter_module/build/host/outputs/repo a12-nicemodule-android
