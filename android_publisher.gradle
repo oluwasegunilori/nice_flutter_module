@@ -9,7 +9,7 @@ publishing {
             groupId = 'com.example'
             artifactId = 'your-artifact-id'
             version = '1.0.0'
-            artifact("$buildDir/host/outputs/repo/aar/")
+            artifact("../build/host/outputs/repo/aar/")
         }
     }
 

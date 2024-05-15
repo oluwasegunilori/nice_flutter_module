@@ -33,3 +33,9 @@ jobs:
         with:
           name: my-artifact
           path: /home/runner/work/nice_flutter_module/nice_flutter_module/build/host/outputs/repo  
+      - uses: shivlingvp/jitpack-action@v2  # Use Jitpack action
+        # Alternatively, use Jitpack/jitpack-action@v1 (if v2 unavailable)
+        with:
+          username: oluwasegunilori  # Replace with your username
+          token: ${{ secrets.TOKEN_NAME }}  # Access token with upload rights
+          build_type: 'NATIVE'  # Specify build type as 'NATIVE' for Flutter modules    
